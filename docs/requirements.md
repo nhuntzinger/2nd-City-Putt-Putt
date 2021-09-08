@@ -1,14 +1,15 @@
-# Put Put Golf Tournament Or Frisbee Golf Tournament
+# Putt Putt Golf Tournament Or Frisbee Golf Tournament
 
 ## Componants
 
-Accounts for each person need o have certain permissions
+Accounts for each person need to have certain permissions matching the 
+role below.
 
 ### Sponsor
 
 - Sponsor a day
 
-  - Cannot double up days
+  - Multiple sponsors cannot double up days
 
 ### Players
 
@@ -16,9 +17,9 @@ Accounts for each person need o have certain permissions
 
   - Used for order
 
-- Score for each hole and total score is recorded
+- Score for individual holes and total score is recorded
 
-- Need to be able to order drinks
+- Can order drinks
 
 ### Bartenders
 
