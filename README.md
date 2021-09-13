@@ -1,6 +1,6 @@
 # 2nd-City-Putt-Putt
 
-## Setup
+## Usage
 
 ### Requirements
 
