@@ -1,2 +1,5 @@
 __pycache__
 *.sqlite3
+
+# mac specific
+*.DS_Store
