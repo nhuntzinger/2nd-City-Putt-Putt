@@ -1,5 +1,13 @@
 __pycache__
-*.sqlite3
+*.pyc
+db.sqlite3
+*.csv
+*.zip
+*.bak
+.vscode
 
 # mac specific
 *.DS_Store
+
+# Database volume
+data/
