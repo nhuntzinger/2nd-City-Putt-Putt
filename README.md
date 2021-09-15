@@ -41,5 +41,5 @@ When the application is launched with docker-compose all edits you make
 to code will be live updated. This means that there is no need to
 restart the containers while developing the django application.
 
-That being said, any changes to the environement (including installing
+That being said, any changes to the environment (including installing
 new Python modules) will require the image to be rebuilt.
