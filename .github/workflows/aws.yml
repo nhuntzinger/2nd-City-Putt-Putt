@@ -10,11 +10,14 @@ on:
 name: Deploy to Amazon ECS
 
 jobs:
+
   deploy:
+
     name: Deploy
     runs-on: ubuntu-latest
 
     steps:
+
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -38,10 +41,10 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and push it to ECR so that it can be deployed to ECS.
-        # docker build -f docker/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker build -f docker/Dockerfile -t public.ecr.aws/e1j5n2c9/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push public.ecr.aws/e1j5n2c9/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "*** Building docker image ***"
+        docker build -f docker/Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        echo "*** Pushing docker image ***"
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
 # The deployment is commented out until ECS is set up properly
