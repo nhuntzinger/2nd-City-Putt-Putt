@@ -1,6 +1,6 @@
 # Putt Putt Golf Tournament Or Frisbee Golf Tournament
 
-## Componants
+## Components
 
 Accounts for each person need to have certain permissions matching the 
 role below.
@@ -29,7 +29,7 @@ role below.
 
 - Controls when tournament is started/ended
 
-- Can overide things
+- Can override things
 
 ### Tournament Results
 
