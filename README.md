@@ -1,5 +1,12 @@
 # 2nd-City-Putt-Putt
 
+## Workspace Description
+The 2nd City Putt Putt web app and documents will be stored in this repository
+
+The documentation and resources for this project will be kept in the "docs" folder. This includes use case diagrams, the project plan, and more as the project progresses.
+
+The app itself will be in the directory puttputt
+
 ## Usage
 
 ### Requirements
