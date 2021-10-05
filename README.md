@@ -98,11 +98,14 @@ Attempt to build the project using Docker
 Start the unit tests. 
 Actual manual testing.
 
-## Other notes
-Prefer: 
-  Tabs over spaces
-  Upper cammel case for classes and lower cammel case for everything else 
-  Enums where possible
-  Constants when appropriate 
-  Don't Repeat Yourself (DRY CODE)
-  Convention helps in the prevention of bugs
+## Code Styling
+
+All code will follow PEP8 Guidlines (<https://pep8.org/>)
+
+With exceptions that we will overide the following rules:
+
+- Spacing will be tabs rather than four spaces
+
+- methods will be named with lower camel case
+
+- Classes will be named with upper camel case
