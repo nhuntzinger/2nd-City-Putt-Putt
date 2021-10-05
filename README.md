@@ -1,5 +1,8 @@
 # 2nd-City-Putt-Putt
 
+## Issues and tasks for the current sprint (Scrum Board History) can be found here:
+https://sharing.clickup.com/l/h/6-132298476-1/251510e00dbda0c
+
 ## Workspace Description
 The 2nd City Putt Putt web app and documents will be stored in this repository
 
@@ -52,7 +55,7 @@ That being said, any changes to the environment (including installing
 new Python modules) will require the image to be rebuilt.
 
 
-# Sprint 1 README
+# Sprint 2 README
 
 ## Version Control Procedures
 The team will use GitHub to track changes to the system from start to finish. Team members must submit pull requests which must be approved by another team member. 
@@ -96,3 +99,10 @@ Start the unit tests.
 Actual manual testing.
 
 ## Other notes
+Prefer: 
+  Tabs over spaces
+  Upper cammel case for classes and lower cammel case for everything else 
+  Enums where possible
+  Constants when appropriate 
+  Don't Repeat Yourself (DRY CODE)
+  Convention helps in the prevention of bugs
