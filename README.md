@@ -73,6 +73,8 @@ Attempt to built the project using Docker
 Start the unit tests. 
 Actual manual testing.
 
+## Communication Procedures
+The team will communicate daily using Discord to checkup on progress and other things
 
 ## Version Control Procedures
 The team will use GitHub to track changes to the system from start to finish. Team members must submit pull requests which must be approved by another team member. 
