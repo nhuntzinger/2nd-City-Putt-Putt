@@ -8,11 +8,20 @@ Jacob Clawson
 
 # Requirements Gathering Document
 
+## Glossary
+
+1. Client Description of Requirements
+2. MOSCOW Categorization of Requirements
+3. Audience Oriented Requirements
+4. Functional Requirements
+5. Use Case Diagrams
+
+
+## 1. Client Description of Requirements
+
 9/15/21
 
 Our client XYZ is asking for an app that will facilitate put put golf tournaments which are sponsored by various companies. Through multiple meetings and a series of questions, we have found the requirements for the web app to be as follows:
-
-## Client Description of Requirements
 
 1. App should allow you to sign in as a user of 4 different types: Player, Sponsor, Bartender, and Manager
 2. Players can sign up for a tournament. During the tournament, they can:
@@ -64,7 +73,7 @@ Requirements rewritten to be Clear, Unambiguous, Consistent, Prioritized, Verifi
 34. Basic authentication will assure security of user rights.
 35. Players add money to their account in order to purchase drinks
 
-## MOSCOW
+## 2. MOSCOW
 
 1. MUST - A sponsor will be able to reserve a day for a tournament.
 2. MUST - Sponsors cannot reserve a day that has already been reserved by the same or a different sponsor.
@@ -104,7 +113,7 @@ Requirements rewritten to be Clear, Unambiguous, Consistent, Prioritized, Verifi
 
 To sum up all requirements into functional and non-functional categories, we have the following:
 
-## AO / FURPS
+## 3. AO / FURPS
 
 ### Audience Oriented
 
@@ -149,7 +158,7 @@ To sum up all requirements into functional and non-functional categories, we hav
     2. Bartender can mark drink as delivered which will remove it from the queue.
     3. Bartender does not have access to register; only the drink queue.
 
-### FURP or FURPS+
+### 4. FURP or FURPS+
 
 1. The system will use a database
     1. Database will store account info for all users
@@ -173,7 +182,7 @@ To sum up all requirements into functional and non-functional categories, we hav
 
 4. The app should be mobile friendly
 
-## Workflow diagrams
+## 5. Use Case diagrams
 
 ### Actors and Their Goals
 
