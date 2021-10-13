@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'puttputt.apps.PuttPuttConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
