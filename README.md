@@ -1,5 +1,8 @@
 # 2nd-City-Putt-Putt
 
+## Issues and tasks for the current sprint (Scrum Board History) can be found here:
+https://sharing.clickup.com/l/h/6-132298476-1/251510e00dbda0c
+
 ## Workspace Description
 The 2nd City Putt Putt web app and documents will be stored in this repository
 
@@ -52,7 +55,7 @@ That being said, any changes to the environment (including installing
 new Python modules) will require the image to be rebuilt.
 
 
-# Sprint 1 README
+# Sprint 2 README
 
 ## Version Control Procedures
 The team will use GitHub to track changes to the system from start to finish. Team members must submit pull requests which must be approved by another team member. 
@@ -73,6 +76,8 @@ Attempt to built the project using Docker
 Start the unit tests. 
 Actual manual testing.
 
+## Communication Procedures
+The team will communicate daily using Discord to checkup on progress and other things
 
 ## Version Control Procedures
 The team will use GitHub to track changes to the system from start to finish. Team members must submit pull requests which must be approved by another team member. 
@@ -93,4 +98,14 @@ Attempt to build the project using Docker
 Start the unit tests. 
 Actual manual testing.
 
-## Other notes
+## Code Styling
+
+All code will follow PEP8 Guidlines (<https://pep8.org/>)
+
+With exceptions that we will overide the following rules:
+
+- Spacing will be tabs rather than four spaces
+
+- methods will be named with lower camel case
+
+- Classes will be named with upper camel case
