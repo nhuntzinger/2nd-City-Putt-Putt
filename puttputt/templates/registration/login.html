@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'puttputt/style.css' %}"/>
+    </head>
+
+    <body>
+        <form class="form-container" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="align-center">
+                <div class="form-inner">
+                    <div class="header-text">
+                        Log In
+                    </div>
+    
+                
+                    <div>
+                        <div class="label">
+                            Enter Username:
+                        
+                            <input class="input"
+                            type="username"
+                            name="username"
+                            placeholder="username"
+                            id="username-input"
+                            value=""
+                            />
+                        </div>
+                    </div>
+    
+                    <div>
+                        <div class="label">
+                            Enter Password:
+                            <input class="input"
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            placeholder="password"
+                            id="password-input"
+                            onChange={this.updateInput}
+                            value=""
+                            />
+                            <!-- {(!this.state.isToggleOn) ? <BsEyeFill id="togglePassword" onClick={this.handleClick} style="right: 0, margin-left: -20, margin-bottom: -2, cursor: 'pointer', position: 'relative'"></BsEyeFill> : <BsEyeSlashFill id="togglePassword" onClick={this.handleClick} style="right: 0, margin-left: -20, margin-bottom: -2, cursor: 'pointer', position: 'realative'"></BsEyeSlashFill>} -->
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 15px">
+                        <!-- <input type="submit" value="login" class="submit_button"> -->
+                        <button class="submit-button" type="submit">Log In</button>
+                        <a class="styled-link" href="#">forgot password?</a>
+                    </div>
+                </div>
+            </div>
+    
+        </form>
+    
+        <div class="form-container" style="margin-top: -1.5px">
+            <div class="form-inner">
+                <div class="header-text">
+                    New User?
+                </div>
+                <a href="/register"><button class="new-user-button">Create Account</button></a>
+            </div>
+        </div>
+    
+        {% if form.errors %}
+            <p>Invalid Login</p>
+        {% endif %}
+
+    </body>
+</html>
