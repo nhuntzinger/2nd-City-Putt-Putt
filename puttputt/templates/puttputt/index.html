@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Index</title>
+
+    </head>
+
+    <body>
+        <h1>This is the index page</h1>
+
+        {% if user.is_authenticated %}
+            <p>Current User: {{ user.get_username }}</p>
+            <p><a href="/accounts/logout">Logout</a></p>
+            <h2>All Users</h2>
+            <hr />
+            {% for item in all %}
+                <p>{{ item.fname }} {{ item.lname }}</p>
+                <p>{{item.get_username}}</p>
+                <hr />
+            {% endfor %}
+
+        {% else %}
+            <p>No user logged in</p>
+            <a href="/accounts/login">Log in</a>
+        {% endif %}
+
+    </body>
+</html>

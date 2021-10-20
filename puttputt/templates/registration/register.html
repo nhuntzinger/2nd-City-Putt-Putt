@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'puttputt/style.css' %}"/>
+
+    </head>
+
+    <body>
+        <div class="form-container" onSubmit={this.signUp}>
+            <div class="align-center">
+                <div class="form-inner">
+                    <div class="header-text">
+                        Create Account
+                    </div>
+
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+
+                        {% if form.errors %}
+                            <p>There are errors in the form</p>
+                        {% endif %}
+
+                        <div>
+                            <label class="label">
+                            Enter Username:
+                            <input
+                            class="input"
+                            type="text"
+                            name="username"
+                            maxlength="150"
+                            autocapitalize="none"
+                            autocomplete="username"
+                            placeholder="Username"
+                            autofocus
+                            required
+                            id="id_username"
+                            />
+                            </label>
+                        </div>    
+
+                        <div>
+                            <label class="label">
+                                Password:
+                                <input 
+                                class="input"
+                                type="password"
+                                name="password1"
+                                autocomplete="new-password"
+                                required
+                                id="id_password1"
+                                placeholder="Password"
+                                />
+                            </label>
+                        </div>
+
+                        <div>
+                            <label class="label">
+                                Reenter password:
+                                <input 
+                                class="input"
+                                type="password"
+                                name="password2"
+                                autocomplete="new-password"
+                                required
+                                id="id_password2"
+                                placeholder="Password"
+                                />
+                            </label>
+                        </div>
+
+                        <div style="margin-top: 15">
+                            <a class="styled-link" href="/accounts/login">already have an account?</a>
+                            <button class="submit-button" type="submit">Create Account</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
