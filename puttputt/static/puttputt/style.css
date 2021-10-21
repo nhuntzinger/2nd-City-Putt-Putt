@@ -1,57 +1,31 @@
-.form-container {
-    border: 2px solid #e0e2e2;
-    box-shadow: opx 2px 4px rgb(0 0 0 / 20%);
-    width: 33%;
-    max-width: 253px;
-    min-width: 253px;
-    margin: auto;
-    margin-top: 30;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.bg-image-vertical {
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
 }
 
-.align-center {
-    align-content: 'center';
+@media (min-width: 1025px) {
+  .h-custom-2 {
+    height: 100%;
+  }
+}
+.gradient-custom {
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom right, rgba(58, 150, 51, 1), rgba(13, 184, 244, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom right, rgba(58, 150, 51, 1), rgba(13, 184, 244, 1))
 }
 
-.form-inner {
-    padding: 10px 15px 25px 15px;
-    text-align: left;
-    display: flex-box;
-    align-items: center;
-    justify-content: center;
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
 }
-
-.header-text {
-    text-align: center;
-}
-
-.label {
-    font-size: 12px;
-    padding-top: 10px;
-    display: block;
-}
-
-.input {
-    width: 95%;
-}
-
-.submit-button {
-    display: inline;
-    float: right;
-    margin-right: 15px;
-    font-size: 10px;
-}
-
-.styled-link {
-    font-size: 8px;
-    vertical-align: text-top;
-    margin-left: 5px;
-    padding-top: 5px;
-}
-
-.new-user-button {
-    width: 100%;
-    margin-top: 10px;
+.card-registration .select-arrow {
+  top: 13px;
 }
