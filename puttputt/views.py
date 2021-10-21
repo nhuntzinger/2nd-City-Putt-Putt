@@ -20,7 +20,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password1']
+            password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             auth_login(request, user)
             return redirect('index')
@@ -29,8 +29,9 @@ def register(request):
         form = UserCreationForm()
 
     context = {'form': form}
+    # might want to use HttpResponseRedirect here so user doesn't resubmit data if they hit the back button
     return render(request,
-    'registration/register.html',
+    'registration/signup.html',
     context
     )
 
