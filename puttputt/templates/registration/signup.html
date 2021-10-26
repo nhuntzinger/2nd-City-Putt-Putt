@@ -19,6 +19,7 @@
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
 
             <form method="POST" action="{% url 'register' %}" onsubmit={this.signUp}>
+                {% csrf_token %}
 
               <div class="row">
                 <div class="col-md-6 mb-4">
@@ -115,6 +116,7 @@
               </div>
 
               <div class="row">
+                  {{ error }}
 <!--                <div class="col-12">-->
 
 <!--                  <select class="select form-control-lg">-->
