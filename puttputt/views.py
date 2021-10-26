@@ -1,7 +1,8 @@
+import django
 from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 
@@ -20,7 +21,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+            password = form.cleaned_data['password1']
             user = authenticate(username=username, password=password)
             auth_login(request, user)
             return redirect('index')
@@ -42,4 +43,8 @@ def index(request):
     'puttputt/index.html',
     {'all': all_members}
 )
+
+def logout_request(request):
+    logout(request)
+    return redirect("index")
 

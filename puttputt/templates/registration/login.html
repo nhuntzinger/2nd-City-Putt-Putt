@@ -26,17 +26,17 @@
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
             <div class="form-outline mb-4">
-              <input type="email" id="username" class="form-control form-control-lg" />
+              <input type="text" id="username" name="username" class="form-control form-control-lg" />
               <label class="form-label" for="username">Email address</label>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="password" class="form-control form-control-lg" onChange={this.updateInput} value=""/>
+              <input type="password" id="password" class="form-control form-control-lg" name="password" onChange={this.updateInput} value=""/>
               <label class="form-label" for="password">Password</label>
             </div>
 
             <div class="pt-1 mb-4">
-              <button class="btn btn-info btn-lg btn-block" type="button">Login</button>
+              <button class="btn btn-info btn-lg btn-block" type="submit" name="login">Login</button>
             </div>
 
             <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
