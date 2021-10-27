@@ -54,7 +54,6 @@ restart the containers while developing the django application.
 That being said, any changes to the environment (including installing
 new Python modules) will require the image to be rebuilt.
 
-
 # Sprint 2 README
 
 ## Version Control Procedures
