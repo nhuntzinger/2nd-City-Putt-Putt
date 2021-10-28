@@ -3,21 +3,33 @@ version: "3.9"
 services:
     db:
         image: postgres
+        container_name: puttputt_db
         volumes:
             - ./data/db:/var/lib/postgresql/data
         environment:
-            - POSTGRES_DB=postgres
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=${DB_NAME}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
         ports:
-            - "5432:5432"
+            - ${DB_PORT}:5432
 
     web:
         build:
             context: ../
             dockerfile: docker/Dockerfile
+        container_name: puttputt_web
         command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - ../:/opt/second-city/code
+        environment:
+            - DB_HOST=${DB_HOST}
+            - DB_NAME=${DB_NAME}
+            - DB_USER=${DB_USER}
+            - DB_PASSWORD=${DB_PASSWORD}
+            - DB_PORT=${DB_PORT}
+            - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+            - DEBUG=${DEBUG}
+        links:
+            - db
         ports:
             - "8000:8000"
