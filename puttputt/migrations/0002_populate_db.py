@@ -15,16 +15,22 @@ def populate_db(apps, schema_editor):
     Prizes = apps.get_model('puttputt', 'Prizes')
     DrinkOrder = apps.get_model('puttputt', 'DrinkOrder')
     VenueInfo = apps.get_model('puttputt', 'VenueInfo')
-    User = apps.get_model('auth', 'User')
+    #User = apps.get_model('auth', 'User')
+    #user=apps.get_model('auth', 'User').objects.create_user(username='manager', password='manager')
+    #apps.get_model('puttputt', 'Profile').objects.filter(user_id=1).update(
+    #    user=apps.get_model('auth', 'User').objects.create_user(username='manager')
+    #)
 
-    manager = User.objects.create_user(username='manager', password='manager')
-    manager.save()
+    #manager = User.objects.create_user(username='manager', password='manager')
+    #manager.save()
 
-    manager_profile = Profile(user=manager, profile_type='MAN')
-    manager_profile.save()
+    #user.save()
 
-    manager_info = ManagerInfo(profile=manager_profile, name='default manager', cash_on_hand=0)
-    manager_info.save()
+    #manager_profile = Profile(user=manager, profile_type='MAN')
+    #manager_profile.save()
+
+    #manager_info = ManagerInfo(profile=manager_profile, name='default manager', cash_on_hand=0)
+    #manager_info.save()
 
     # TODO: add the other info that needs to be in this population
 

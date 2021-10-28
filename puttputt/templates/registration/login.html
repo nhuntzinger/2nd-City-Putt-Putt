@@ -23,11 +23,20 @@
           <form style="width: 23rem;" method="POST" action="{% url 'login' %}">
             {% csrf_token %}
 
+            {% for message in messages %}
+    
+              <div class="alert alert-danger">
+              <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+              </div>
+
+            {% endfor %}
+
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
             <div class="form-outline mb-4">
               <input type="text" id="username" name="username" class="form-control form-control-lg" />
-              <label class="form-label" for="username">Email address</label>
+              <label class="form-label" for="username">Username</label>
             </div>
 
             <div class="form-outline mb-4">
