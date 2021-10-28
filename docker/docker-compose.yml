@@ -18,7 +18,7 @@ services:
             context: ../
             dockerfile: docker/Dockerfile
         container_name: puttputt_web
-        command: python manage.py runserver 0.0.0.0:8000
+        command: ./entry_point.sh
         volumes:
             - ../:/opt/second-city/code
         environment:

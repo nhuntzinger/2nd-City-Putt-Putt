@@ -5,10 +5,9 @@ until python manage.py migrate; do
     sleep 2
     echo "Retry!";
 done
-python manage.py shell < init_admin.py
 
-python manage.py makemigrations app
-python manage.py migrate app
+python manage.py makemigrations
+python manage.py migrate
 
 echo "Django is ready.";
 
