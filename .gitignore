@@ -5,6 +5,8 @@ db.sqlite3
 *.zip
 *.bak
 .vscode
+.env
+venv
 
 # mac specific
 *.DS_Store

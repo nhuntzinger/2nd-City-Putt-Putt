@@ -18,6 +18,24 @@ The app itself will be in the directory puttputt
 
 - docker-compose (<https://docs.docker.com/compose/install/>)
 
+### First Time Setup
+
+Create a .env file inside the `./docker` directory. This file will need
+to contain the following information, with the approriate values filled
+in:
+
+```bash
+DB_HOST=<database IP address>
+DB_NAME=<name of your database>
+DB_USER=<database username>
+DB_PASSWORD=<database password>
+DB_PORT=<database port>
+DJANGO_SECRET_KEY=<secret key to be used by django>
+DEBUG=<True|False>
+```
+
+You can use the .env file from the team Clickup board for this.
+
 ### Starting/Stopping the Application
 
 To launch, run the following in the root directory:
@@ -53,7 +71,6 @@ restart the containers while developing the django application.
 
 That being said, any changes to the environment (including installing
 new Python modules) will require the image to be rebuilt.
-
 
 # Sprint 2 README
 

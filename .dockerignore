@@ -23,6 +23,9 @@ sprint_1_docs/
 # Visual Studio Code
 .vscode/
 
+# Pycharm
+.idea
+
 # Other
 db.sqlite3
 *.csv
