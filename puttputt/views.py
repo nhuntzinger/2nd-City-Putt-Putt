@@ -189,9 +189,9 @@ def edit_user(request):
 
     username = request.GET['username']
 
-    print(username)
+    profile_type = get_user_current_type(username)
 
-    context = {}
+    context = {'username': username, 'current': profile_type}
 
     return render(request, 'puttputt/edit_user.html', context)
 
@@ -233,3 +233,19 @@ def leaderboard(request):
     context = {'leaderboard': leaderboard, 'player_score': player_score}
 
     return render(request, 'puttputt/leaderboard.html', context)
+
+def change_user_type(request):
+    if 'player' in request.POST:
+        username = request.POST['player']
+        set_user_type('player', username)
+    elif 'sponsor' in request.POST:
+        username = request.POST['sponsor']
+        set_user_type('sponsor', username)
+    elif 'manager' in request.POST:
+        username = request.POST['manager']
+        set_user_type('manager', username)
+    else:
+        username = request.POST['barista']
+        set_user_type('barista', username)
+
+    return redirect(manager)

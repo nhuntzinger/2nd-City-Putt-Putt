@@ -36,4 +36,5 @@ urlpatterns = [
     path('sponsor_pay_fee', views.sponsor_pay_fee, name='sponsor_pay_fee'),
     path('sponsor_add_player', views.sponsor_add_player, name='sponsor_add_player'),
     path('leaderboard', views.leaderboard, name='leaderboard'),
+    path('change_user_type', views.change_user_type, name='change_user_type')
 ]

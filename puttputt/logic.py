@@ -169,3 +169,55 @@ def check_game_complete_for(user):
             complete = False
 
     return complete
+
+def set_user_type(to, username):
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+
+    profile_type = profile.profile_type
+
+    if to == 'player':
+        if profile_type == Profile.ProfileType.PLAYER:
+            return
+        else: 
+            profile.profile_type = Profile.ProfileType.PLAYER
+            profile.save()
+            try:
+                player_info = PlayerInfo.objects.get(profile=profile)
+            except:
+                # this should likely only happen with our auto generated users that didn't start as players...
+                new_info = PlayerInfo.objects.create(profile=profile)
+                new_info.save()
+    elif to == 'sponsor':
+        if profile_type == Profile.ProfileType.SPONSOR:
+            return
+        else:
+            profile.profile_type = Profile.ProfileType.SPONSOR
+            profile.save()
+            try:
+                sponsor_info = SponsorInfo.objects.get(profile=profile)
+            except:
+                new_info = SponsorInfo.objects.create(profile=profile, title=username)
+                new_info.save()
+    elif to == 'manager':
+        if profile_type == Profile.ProfileType.MANAGER:
+            return
+        else:
+            profile.profile_type = Profile.ProfileType.MANAGER
+            profile.save()
+            try:
+                manager_info = ManagerInfo.objects.get(profile=profile)
+            except:
+                new_info = ManagerInfo.objects.create(profile=profile, name=username)
+                new_info.save()
+    else:
+        if profile_type == Profile.ProfileType.BARISTA:
+            return
+        else:
+            profile.profile_type = Profile.ProfileType.BARISTA
+            profile.save()
+
+def get_user_current_type(username):
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    return profile.profile_type
