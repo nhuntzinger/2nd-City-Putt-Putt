@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Manager</title>
+    </head>
+
+    <body>
+        <p>Welcome to the manager homepage</p>
+    </body>
+
+    <ul>
+        {% for user in all_users %}
+            <li>{{user.username}}     <a href='edit_user?username={{user.username}}'> edit this user</a></li>
+        {% endfor %}
+    </ul>
+</html>

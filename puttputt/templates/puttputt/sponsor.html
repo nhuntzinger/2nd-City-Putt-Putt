@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sponsor</title>
+    </head>
+
+    <body>
+        <p>Welcome to the sponsor console!</p>
+    </body>
+
+    {% if tournament != None %}
+        <p>You have a tournament!</p>
+        {% if tournament.fee_paid %}
+            <p>Your tournament is all ready to go.</p>
+            <!-- ADD USERS TO TOURNAMENT SECTION -->
+            <h3>Select players below to add to your tournament</h3>
+            <form action="/sponsor_add_player" method="post">
+                {% csrf_token %}
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    {% for player in players %}
+                        <button name="button" value="{{player.profile.user.username}}" type="submit" class="btn btn-secondary">{{player.profile.user.username}}</button>
+                    {% endfor %}
+                </div>
+            </form>
+        {% else %}
+            <p>You still need to pay the fee for your tournament.</p>
+            <p>Pay below by pressing the button</p>
+            <form action="/sponsor_pay_fee" method="post">
+                {% csrf_token %}
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button name="button" value="1" type="submit" class="btn btn-secondary">Pay $200</button>
+                </div>
+            </form>
+        {% endif %}
+</form>
+    {% else %}
+        <p>You do not have a tournament</p>
+        <p>You can begin by selecting a date below for your tournament</p>
+        <!-- DATE PICKER FORM -->
+        <form action="sponsor_date" method="post">
+            {% csrf_token %}
+            {{ form }}
+        <input type="submit" value="Submit">
+    {% endif %}
+</html>
