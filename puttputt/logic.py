@@ -80,7 +80,7 @@ def get_user_type(user):
 
     if sponsor:
         return 'sponsor'
-    elif manager != None:
+    elif manager:
         return 'manager'
     elif barista != None:
         return 'barista'
