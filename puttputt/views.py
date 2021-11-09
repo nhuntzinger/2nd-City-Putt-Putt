@@ -103,7 +103,12 @@ def game(request):
 
     return render(request, 'puttputt/game.html', context)
 
-# this function serves the purpose of eating game stroke submissions
+def add_stroke(request):
+    """this function serves the purpose of eating game stroke submissions
+    then redirecting back to the game board so they can't accidentally refresh
+    then submit again
+    """
+    print('adding a stroke')
 # then redirecting back to the game board so they can't accidentally refresh then submit again
 def add_stroke(request):
     print('adding a stroke')
