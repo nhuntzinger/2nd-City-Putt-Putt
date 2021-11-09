@@ -78,7 +78,7 @@ def get_user_type(user):
     manager = get_manager(user)
     barista = get_barista(user)
 
-    if sponsor != None:
+    if sponsor:
         return 'sponsor'
     elif manager != None:
         return 'manager'
