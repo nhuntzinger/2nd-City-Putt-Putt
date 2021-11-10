@@ -122,8 +122,8 @@ def add_stroke(request):
     return redirect(location)
 
 
-# the barista's dashboard
 def barista(request):
+"""The barista's dashboard"""
     drinks_outstanding = DrinkOrder.objects.filter(order_delivered=False)
 
     # this is so we can know in the template not to render the list
