@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>User Editor</title>
+    </head>
+
+    <body>
+        <p>Welcome to the user editor...</p>
+
+        <p>Editing user: {{username}}</p>
+
+        <p>Who is currently a {{current}}</p>     
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <form action="/change_user_type" method="post">
+                {% csrf_token %}
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button name="player" value="{{username}}" type="submit" class="btn btn-secondary">Player</button>
+                    <button name="sponsor" value="{{username}}" type="submit" class="btn btn-secondary">Sponsor</button>
+                    <button name="manager" value="{{username}}" type="submit" class="btn btn-secondary">Manager</button>
+                    <button name="barista" value="{{username}}" type="submit" class="btn btn-secondary">Barista</button>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

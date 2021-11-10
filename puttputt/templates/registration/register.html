@@ -16,63 +16,19 @@
                         Create Account
                     </div>
 
-                    <form method="POST" action="{% url 'register' %}">
+                    <form method="POST">
                         {% csrf_token %}
 
                         {% if form.errors %}
                             <p>There are errors in the form</p>
                         {% endif %}
 
-                        <div>
-                            <label class="label">
-                            Enter Username:
-                            <input
-                            class="input"
-                            type="text"
-                            name="username"
-                            maxlength="150"
-                            autocapitalize="none"
-                            autocomplete="username"
-                            placeholder="Username"
-                            autofocus
-                            required
-                            id="id_username"
-                            />
-                            </label>
-                        </div>    
+                        {{ form.error }}
 
-                        <div>
-                            <label class="label">
-                                Password:
-                                <input 
-                                class="input"
-                                type="password"
-                                name="password1"
-                                autocomplete="new-password"
-                                required
-                                id="id_password1"
-                                placeholder="Password"
-                                />
-                            </label>
-                        </div>
-
-                        <div>
-                            <label class="label">
-                                Reenter password:
-                                <input 
-                                class="input"
-                                type="password"
-                                name="password2"
-                                autocomplete="new-password"
-                                required
-                                id="id_password2"
-                                placeholder="Password"
-                                />
-                            </label>
-                        </div>
+                        {{ form.as_p }}
 
                         <div style="margin-top: 15">
-                            <a class="styled-link" href="/accounts/login">already have an account?</a>
+                            <a class="styled-link" href="/login">already have an account?</a>
                             <button class="submit-button" type="submit">Create Account</button>
                         </div>
                     </form>

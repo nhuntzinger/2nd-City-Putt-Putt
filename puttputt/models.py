@@ -40,11 +40,11 @@ class PlayerInfo(models.Model):
     # the player's profile
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     # what tournament the player is allowed to play in 
-    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
+    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, null=True)
     # the player's current score (update this after each stroke)
-    current_score = models.IntegerField()
+    current_score = models.IntegerField(default=0)
     # the player's current hole (update this after each stroke)
-    current_hole = models.IntegerField()
+    current_hole = models.IntegerField(default=0)
 
 class ManagerInfo(models.Model):
     # the profile of this Manager
@@ -52,7 +52,7 @@ class ManagerInfo(models.Model):
     # the manager's name
     name = models.CharField(max_length=50)
     # how much cash this manager has in the register that has not yet been payed to the owner
-    cash_on_hand = models.IntegerField()
+    cash_on_hand = models.IntegerField(default=0)
 
 
 class DrinkInfo(models.Model):

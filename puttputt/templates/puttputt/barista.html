@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Barista</title>
+    </head>
+
+    <body>
+        <p>Welcome to the barista home page</p>
+    </body>
+
+    {% if drinks != None %}
+        {% for drink in drinks %}
+            <p>{{drink.drink.title}} for {{drink.profile.user.username}} </p>
+        {% endfor %}
+    {% else %}
+        <p>There are no outstanding drinks... well done!</p>
+    {% endif %}
+
+</html>

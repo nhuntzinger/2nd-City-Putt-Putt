@@ -8,24 +8,37 @@
     </head>
 
     <body>
-        <h1>This is the index page</h1>
-
+        <!-- LOGGED IN USER SECTION BELOW -->
         {% if user.is_authenticated %}
-            <p>Current User: {{ user.get_username }}</p>
+        <h1>You are currently signed in.</h1>
+
+            <p>Player: {{ user.get_username }}</p>
             <p>
                 <a href="/logout">Logout</a>
             </p>
+
+            {% if not tournament == None %}
+                <p>Your tournament is ready!</p>
+                <p>Click below to enter your game!</p>
+                <!-- TODO: NEED TO BLOCK PLAYER FROM GOING BACK TO GAME AFTER THEY HAVE COMPLETED THEIRS -->
+                <a href="/game"> ENTER GAME </a>
+            {% else %}
+                <p>You're not part of a tournament yet... ask your sponsor to help!</p>
+            {% endif %}
             
-            <h2>All Users</h2>
+            <!--this can be removed but you can also bring it back. for testing, it's nice -->
+            <!--<h2>All Users</h2>
             <hr />
             {% for item in all %}
                 <p>{{ item.fname }} {{ item.lname }}</p>
                 <p>{{item.get_username}}</p>
                 <hr />
-            {% endfor %}
+            {% endfor %} -->
 
+        <!-- NOT LOGGED IN USER SECTION BELOW -->
         {% else %}
-            <p>No user logged in</p>
+            <h1>Welcome to the PuttPutt app!</h1>
+            <p>Please login or sign up to get started!</p>
             <p>
                 <a href="/login">Log in</a>
                 <a href="/register">Sign Up</a>

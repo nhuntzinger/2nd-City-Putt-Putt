@@ -1,0 +1,24 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>End Game</title>
+    </head>
+
+    <body>
+        <p>Welcome to the end of the game... well played</p>
+
+        <p>Your final score was {{score}}</p>
+
+        {% if is_game_complete %}
+            <p>Your game is complete. all players have finished.</p>
+            <!-- PRIZE SECTION SHOULD BE JUST BELOW THIS... -->
+        {% else %}
+            <p>We are still waiting for other players to finish their game...</p>
+        {% endif %}
+
+        <p>View the all time <a href="leaderboard">leaderboard</a></p>
+
+        <p><a href="/logout">Logout</a></p>
+    </body>
+    
+</html>
