@@ -36,5 +36,8 @@ urlpatterns = [
     path('sponsor_pay_fee', views.sponsor_pay_fee, name='sponsor_pay_fee'),
     path('sponsor_add_player', views.sponsor_add_player, name='sponsor_add_player'),
     path('leaderboard', views.leaderboard, name='leaderboard'),
-    path('change_user_type', views.change_user_type, name='change_user_type')
+    path('change_user_type', views.change_user_type, name='change_user_type'),
+    path('edit_drink_menu', views.edit_drink_menu, name="edit_drink_menu"),
+    path('add_drink', views.add_drink, name="add_drink"),
+    path(r'^delete/(?P<pk>[0-9]+)/$', views.remove_drink, name="remove_drink")
 ]

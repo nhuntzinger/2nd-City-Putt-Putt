@@ -10,6 +10,8 @@
         <p>Welcome to the manager homepage</p>
     </body>
 
+    <p>Click <a href="edit_drink_menu">Here</a> to edit the drink menu</p>
+
     <ul>
         {% for user in all_users %}
             <li>{{user.username}}     <a href='edit_user?username={{user.username}}'> edit this user</a></li>
