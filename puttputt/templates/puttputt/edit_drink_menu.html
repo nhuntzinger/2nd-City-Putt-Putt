@@ -1,0 +1,26 @@
+<p>This is where the manage will edit drink options</p>
+
+<p>Available Drinks</p>
+<ul>
+    {% for drink in current_drink_options %}
+        <li>{{drink.title}} for ${{drink.price}}</li>
+
+        <form action="{% url 'remove_drink' drink.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete" name={{drink.pk}} />
+        </form>
+    {% endfor %}    
+</ul>
+
+<form action="add_drink" method="post">
+    {% csrf_token %}
+    <label for="title">Drink Name: </label>
+    <input id="title" type="text" name="title" value="{{ current_title }}">
+    <br />
+    <br />
+    <label for="price">Drink Price: </label>
+    <input id="price" type="number" name="price" min="0" />
+    <br />
+    <br />
+    <input type="submit" value="Create Drink">
+</form>

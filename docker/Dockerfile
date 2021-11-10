@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 # here without running pip install again
 COPY . /opt/second-city/code
 EXPOSE 8000
-CMD [ "./entry_point.sh" ]
+CMD [ "./entry_point.sh"]

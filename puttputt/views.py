@@ -1,6 +1,6 @@
 import datetime
 import django
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponseRedirect
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, logout
@@ -12,7 +12,7 @@ from django.views.decorators.csrf import csrf_protect
 from puttputt.models import Profile, PlayerInfo
 from puttputt.logic import * 
 
-from .forms import TournamentForm
+from .forms import DrinkForm, TournamentForm
 
 @csrf_protect
 def loginFunc(request):
@@ -254,3 +254,30 @@ def change_user_type(request):
         set_user_type('barista', username)
 
     return redirect(manager)
+
+def edit_drink_menu(request):
+    current_drink_options = DrinkInfo.objects.all()
+    context = {"current_drink_options": current_drink_options}
+
+    return render(request, 'puttputt/edit_drink_menu.html', context)
+
+def add_drink(request):
+    if request.method == "POST":
+        form = DrinkForm(request.POST, request.FILES)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            price = form.cleaned_data['price']
+            drink = DrinkInfo(title=title, price=price)
+            drink.save()
+    else:
+        form = DrinkForm()
+
+    return redirect(edit_drink_menu)
+
+def remove_drink(request, pk):
+    drink = get_object_or_404(DrinkInfo, pk=pk)
+
+    if request.method == "POST":
+        drink.delete()
+
+    return redirect(edit_drink_menu)
