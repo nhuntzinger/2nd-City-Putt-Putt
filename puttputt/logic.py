@@ -59,15 +59,12 @@ def determine_redirect_login(user):
 
     if user_type == 'player':
         location = 'index'
-        # if it's a barista -> redirect them to the drinks page
     elif user_type == 'barista':
-        location = 'barista'
-        # if it's a sponsor -> redirect them to the sponsor page
+        location = 'barista'  # Redirect baristas to the drinks page
     elif user_type == 'sponsor':
-        location = 'sponsor'
+        location = 'sponsor'  # Redirect sponsors to the sponsor page
     else:
-        # if it's a manager -> redirect them to the manager page
-        location = 'manager'
+        location = 'manager'  # Redirect managers to the manager page
 
     return location
 
