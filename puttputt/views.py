@@ -134,8 +134,8 @@ def barista(request):
 
     return render(request, 'puttputt/barista.html', context)
 
-# the manager's dashboard
 def manager(request):
+"""The manager's dashboard"""
     all_users = User.objects.all
 
     context = {'all_users': all_users}
