@@ -109,9 +109,6 @@ def add_stroke(request):
     then submit again
     """
     print('adding a stroke')
-# then redirecting back to the game board so they can't accidentally refresh then submit again
-def add_stroke(request):
-    print('adding a stroke')
     stroke = request.POST['button']
 
     player = get_player(request.user)
@@ -123,7 +120,7 @@ def add_stroke(request):
 
 
 def barista(request):
-"""The barista's dashboard"""
+    """The barista's dashboard"""
     drinks_outstanding = DrinkOrder.objects.filter(order_delivered=False)
 
     # this is so we can know in the template not to render the list
@@ -135,7 +132,7 @@ def barista(request):
     return render(request, 'puttputt/barista.html', context)
 
 def manager(request):
-"""The manager's dashboard"""
+    """The manager's dashboard"""
     all_users = User.objects.all
 
     context = {'all_users': all_users}
@@ -143,7 +140,7 @@ def manager(request):
     return render(request, 'puttputt/manager.html', context)
 
 def sponsor(request):
-"""The sponsor's dashboard""""
+    """The sponsor's dashboard"""
 
     spons = get_sponsor(request.user)
 
