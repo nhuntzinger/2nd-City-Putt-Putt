@@ -142,8 +142,8 @@ def manager(request):
 
     return render(request, 'puttputt/manager.html', context)
 
-# the sponsor's dashboard
 def sponsor(request):
+"""The sponsor's dashboard""""
 
     spons = get_sponsor(request.user)
 
