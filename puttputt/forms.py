@@ -20,3 +20,4 @@ class TournamentForm(ModelForm):
 class DrinkForm(forms.Form):
     title = forms.CharField(label='title', max_length=30)
     price = forms.IntegerField(label='price')
+    image = forms.CharField(label='image', max_length=500, required=False)

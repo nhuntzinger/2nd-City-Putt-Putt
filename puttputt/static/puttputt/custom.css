@@ -1,0 +1,106 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-weight: bold;
+}
+
+.bg-blue, .btn-blue {
+	background-color: #384660 !important;
+	border-color: #384660 !important;
+}
+
+.bg-primary, .btn-primary {
+	background-color: #0F2439 !important;
+	border-color: #0F2439 !important;
+}
+
+.bg-info, .btn-info {
+	background-color: #226BAA !important;
+	border-color: #226BAA !important;
+}
+
+.text-primary {
+	color: #0F2439 !important;
+}
+
+.text-info {
+	color: #226BAA !important;
+}
+
+.text-gray {
+	color: #495057 !important;
+}
+
+.popcard {
+	transition: all .2s ease-in-out;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.popcard:hover {
+	transform: scale(1.03);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.pill-1 {
+	background-color: #226BAA !important;
+}
+
+.pill-2 {
+	background-color: #5cb85c !important;
+}
+
+.pill-3 {
+	background-color: #f0ad4e !important;
+}
+
+.pill-4 {
+	background-color: #d9534f !important;
+}
+
+/* for the order quantity input*/
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px
+    ;min-width: 35px;
+    text-align: center;
+}
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    }
+.qty .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    background-clip: padding-box;
+}
+.qty .minus:hover{
+    background-color: #717fe0 !important;
+}
+.qty .plus:hover{
+    background-color: #717fe0 !important;
+}
+
+.card-img-top {
+    width: 20vw;
+    height: 20vw;
+
+}

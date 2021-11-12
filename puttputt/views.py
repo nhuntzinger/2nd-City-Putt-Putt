@@ -1,7 +1,6 @@
 import datetime
 import django
 from django.shortcuts import get_object_or_404, render, redirect, HttpResponseRedirect
-
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
@@ -9,9 +8,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 
-from puttputt.models import Profile, PlayerInfo
-from puttputt.logic import * 
-
+from .models import Profile, PlayerInfo, DrinkInfo, DrinkOrder, VenueInfo, Tournament
+from .logic import *
+from django.urls import reverse
 from .forms import DrinkForm, TournamentForm
 
 @csrf_protect
@@ -35,6 +34,11 @@ def loginFunc(request):
     'registration/login.html'
     )
 
+def homeFunc(request):
+    user = request.user
+    location = determine_redirect_login(user)
+    print(location)
+    return redirect(location)
 
 def register(request):
     if request.method == 'POST':
@@ -62,7 +66,7 @@ def register(request):
     )
 
 def index(request):
-    all_members = User.objects.all
+    all_members = User.objects.all()
 
     profile = None
     player_info = None
@@ -74,7 +78,7 @@ def index(request):
         profile = info['profile']
         player_info = info['player_info']
         tournament = player_info.tournament
-    else: 
+    else:
         print('no authorized user')
 
     #if profile != None and player_info != None:
@@ -86,6 +90,23 @@ def index(request):
     'puttputt/index.html',
     context)
 
+def order(request):
+    all_drinks = DrinkInfo.objects.all
+    context = {'drinks': all_drinks}
+    return render(request, 'puttputt/order.html', context)
+
+
+
+def order_drink(request):
+    user = request.user
+    drink = request.POST.get('drink')
+    quantity = request.POST.get('qty')
+    new_order = DrinkOrder(drink=DrinkInfo.objects.get(title=drink), user=user, order_delivered=False, quantity=quantity)
+    user.save()
+    new_order.save()
+
+    return redirect('game')
+
 def logout_request(request):
     logout(request)
     return redirect("index")
@@ -93,13 +114,16 @@ def logout_request(request):
 # the main game 
 def game(request):
     game_info = get_game_info(request.user)
+    active_drinks = DrinkOrder.objects.filter(user=request.user, order_delivered=False)
+    if active_drinks.count() == 0:
+        active_drinks = None
 
     score = game_info['current_score']
     hole = game_info['current_hole']
 
     last_hole = hole == VenueInfo.objects.all()[:1].get().number_of_holes
 
-    context = {'score': score, 'hole': hole, 'last_hole': last_hole}
+    context = {'score': score, 'hole': hole, 'last_hole': last_hole, 'drinks':active_drinks}
 
     return render(request, 'puttputt/game.html', context)
 
@@ -148,9 +172,11 @@ def sponsor(request):
 
     form = TournamentForm()
 
+    players_in_tournament = PlayerInfo.objects.filter(tournament=tournament)
+
     players_without_tournaments = PlayerInfo.objects.filter(tournament=None)
 
-    context = {'tournament': tournament, 'form': form, 'players': players_without_tournaments}
+    context = {'tournament': tournament, 'form': form, 'players': players_without_tournaments, 'playerz': players_in_tournament}
 
     return render(request, 'puttputt/sponsor.html', context)
 
@@ -264,10 +290,19 @@ def add_drink(request):
         if form.is_valid():
             title = form.cleaned_data['title']
             price = form.cleaned_data['price']
-            drink = DrinkInfo(title=title, price=price)
-            drink.save()
+            image = form.cleaned_data['image']
+            if image == '':
+                drink = DrinkInfo(title=title, price=price)
+                drink.save()
+            else:
+                drink = DrinkInfo(title=title, price=price, image=image)
+                drink.save()
+
+        else:
+            messages.error(request, 'please enter a drink name and drink price')
     else:
         form = DrinkForm()
+
 
     return redirect(edit_drink_menu)
 
@@ -278,4 +313,12 @@ def remove_drink(request, pk):
         drink.delete()
 
     return redirect(edit_drink_menu)
+
+def mark_delivered(request, pk):
+    drink = get_object_or_404(DrinkOrder, pk=pk)
+    if request.method == "POST":
+        drink.order_delivered = True
+        drink.save()
+
+    return redirect(barista)
 

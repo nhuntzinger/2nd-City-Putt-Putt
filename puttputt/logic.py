@@ -21,6 +21,8 @@ def get_sponsor(user):
     try:
         profile = Profile.objects.get(user=user)
         sponsor = SponsorInfo.objects.get(profile=profile)
+        # this logic will return the user to the sponsor home page, even if they change to another user type after.
+        # Should we keep returning them to that page, or their current user type homepage instead?
         return sponsor
     except:
         return None

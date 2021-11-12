@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 # each user will have a record in Profile
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.user.username
     # a profile can be a player, manager, barista, or sponsor
     class ProfileType(models.TextChoices):
         PLAYER = 'PLY', _('Player')
@@ -26,6 +27,8 @@ class SponsorInfo(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     # the title of the sponsor: i.e. Nike
     title = models.CharField(max_length=50)
+    def __str__(self):
+        return self.profile
 
 class Tournament(models.Model):
     # who sponsored the event
@@ -58,6 +61,10 @@ class ManagerInfo(models.Model):
 class DrinkInfo(models.Model):
     title = models.CharField(max_length=50)
     price = models.IntegerField()
+    image = models.CharField(max_length=500, default="https://tacm.com/wp-content/uploads/2018/01/no-image-available.jpeg")
+
+    def __str__(self):
+        return self.title
 
 class LeaderBoard(models.Model):
     # what tournament the score belongs to
@@ -76,11 +83,13 @@ class Prizes(models.Model):
 
 class DrinkOrder(models.Model):
     # who ordered the drink
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # which drink was ordered
     drink = models.ForeignKey(DrinkInfo, on_delete=models.CASCADE)
     # whether or not the drink has been delivered
     order_delivered = models.BooleanField(default=False)
+    # quantity of drink ordered
+    quantity = models.IntegerField(default=1)
 
 class VenueInfo(models.Model):
     title = models.CharField(max_length=50)

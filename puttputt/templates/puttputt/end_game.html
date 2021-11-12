@@ -1,8 +1,7 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>End Game</title>
-    </head>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Done{% endblock %}
+{% block content %}
 
     <body>
         <p>Welcome to the end of the game... well played</p>
@@ -20,5 +19,4 @@
 
         <p><a href="/logout">Logout</a></p>
     </body>
-    
-</html>
+{% endblock %}}

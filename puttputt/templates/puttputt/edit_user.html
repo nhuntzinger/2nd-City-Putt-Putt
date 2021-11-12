@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>User Editor</title>
-    </head>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Edit User{% endblock %}
+{% block content %}
 
     <body>
         <p>Welcome to the user editor...</p>
@@ -19,11 +16,14 @@
                 <div class="btn-group mr-2" role="group" aria-label="First group">
                     <button name="player" value="{{username}}" type="submit" class="btn btn-secondary">Player</button>
                     <button name="sponsor" value="{{username}}" type="submit" class="btn btn-secondary">Sponsor</button>
+<!--                    should we even allow any other user type to become a manager? i at least think players shouldn't-->
+                    {% if current != 'PLY' %}
                     <button name="manager" value="{{username}}" type="submit" class="btn btn-secondary">Manager</button>
+                    {% endif %}
                     <button name="barista" value="{{username}}" type="submit" class="btn btn-secondary">Barista</button>
                 </div>
             </form>
         </div>
     </body>
 
-</html>
+{% endblock %}

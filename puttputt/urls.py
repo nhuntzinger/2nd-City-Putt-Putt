@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', views.index, name='index'),
+    path('home', views.homeFunc, name='home'),
     path('login', views.loginFunc, name='login'),
     path('register', views.register, name='register'),
     path('logout', views.logout_request, name='logout_request'),
@@ -39,5 +40,10 @@ urlpatterns = [
     path('change_user_type', views.change_user_type, name='change_user_type'),
     path('edit_drink_menu', views.edit_drink_menu, name="edit_drink_menu"),
     path('add_drink', views.add_drink, name="add_drink"),
-    path(r'^delete/(?P<pk>[0-9]+)/$', views.remove_drink, name="remove_drink")
+    path(r'^delete/(?P<pk>[0-9]+)/$', views.remove_drink, name="remove_drink"),
+
+    path("order", views.order, name='order'),
+    path("order_drink", views.order_drink, name='order_drink'),
+    path(r'(?P<pk>[0-9]+)/$', views.mark_delivered, name='mark_delivered')
+
 ]
