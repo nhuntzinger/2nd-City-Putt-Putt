@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Index</title>
-
-    </head>
-
-    <body>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block content %}
         <!-- LOGGED IN USER SECTION BELOW -->
         {% if user.is_authenticated %}
-        <h1>You are currently signed in.</h1>
-
-            <p>Player: {{ user.get_username }}</p>
-            <p>
-                <a href="/logout">Logout</a>
-            </p>
-
+        <h1>Welcome, {{ user.get_username }}!</h1>
+            <h2>If you're here to sponsor a tournament, please wait for admin to upgrade your account</h2>
             {% if not tournament == None %}
-                <p>Your tournament is ready!</p>
+                <h2>Your tournament is ready!</h2>
                 <p>Click below to enter your game!</p>
                 <!-- TODO: NEED TO BLOCK PLAYER FROM GOING BACK TO GAME AFTER THEY HAVE COMPLETED THEIRS -->
                 <a href="/game"> ENTER GAME </a>
@@ -27,24 +16,22 @@
             {% endif %}
             
             <!--this can be removed but you can also bring it back. for testing, it's nice -->
-            <!--<h2>All Users</h2>
-            <hr />
-            {% for item in all %}
-                <p>{{ item.fname }} {{ item.lname }}</p>
-                <p>{{item.get_username}}</p>
-                <hr />
-            {% endfor %} -->
+<!--            <h2>All Users</h2>-->
+<!--            <hr />-->
+<!--            {% for item in all %}-->
+<!--                <p>{{ item.fname }} {{ item.lname }}</p>-->
+<!--                <p>{{item.get_username}}</p>-->
+<!--                <hr />-->
+<!--            {% endfor %}-->
 
         <!-- NOT LOGGED IN USER SECTION BELOW -->
         {% else %}
             <h1>Welcome to the PuttPutt app!</h1>
             <p>Please login or sign up to get started!</p>
             <p>
-                <a href="/login">Log in</a>
-                <a href="/register">Sign Up</a>
+                <a href="/login" class="btn btn-primary">Log in</a>
+                <a href="/register" class="btn btn-primary">Sign Up</a>
             </p>
 
         {% endif %}
-
-    </body>
-</html>
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'puttputt/custom.css' %}">
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script src="https://kit.fontawesome.com/584d265fad.js" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand h2 mb-3 mb-md-0 mx-4 py-2" href="/">
+			<img src="{% static 'puttputt/logo.jpeg' %}" alt="PuttPutt" style="width:150px;"/>
+		</a>
+		{% if user.is_authenticated %}
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto m-0">
+				<li class="nav-item mr-3 {% if request.get_full_path == "/" %}active{% endif %}">
+					<a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-sm"></i> Home</a>
+				</li>
+				{% if user.profile.profile_type == 'PLY' %}
+				<li class="nav-item mr-3 {% if request.get_full_path == "/order" %}active{% endif %}">
+					<a class="nav-link" href="/order">Order Drink</a>
+				</li>
+				{% endif %}
+			</ul>
+			<ul class="navbar-nav ml-md-auto mr-3">
+				<a class="nav-link" style="color:rgba(255,255,255, 1);" href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+			</ul>
+		</div>
+		{% endif %}
+	</nav>
+</header>
+<body>
+	<main>
+		<div class="container-fluid m-0 p-0" style="min-height: calc(65vh - 40px);">
+			{% if user.is_authenticated %}<div class="m-5">{% else %}<div class="m-0">{% endif %}
+				{% if user.is_authenticated %}
+				<div class="row">
+					<div class="col-lg-1"></div>
+					<div class="col-lg-10">
+						{% endif %}
+						{% block content %}
+						{% endblock %}
+						{% if user.is_authenticated %}
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</main>
+</body>
+{% if user.is_authenticated %}
+<footer class="w-100 bg-blue text-white text-center text-lg-start">
+	<div class="container-fluid w-100 p-0 m-0">
+
+		<div class="w-100 d-flex flex-row justify-content-between">
+
+			<div class="mb-4 mb-md-0 mt-5 col ml-4">
+				<h5 class="text-left text-uppercase">Contact Information</h5>
+				<p class="text-left mb-2">1234 Main Street<br />Logan, UT 88888</p>
+				<p class="text-left mb-2"><i class="fas fa-phone fa-fw fa-sm"></i> (123)456-7890</p>
+				<p class="text-left"><i class="fas fa-envelope fa-fw fa-sm"></i> <a href="#">2ndcity@gmail.com</a></p>
+			</div>
+
+			<div class="mb-4 mb-md-0 mt-5 col">
+				<h5 class="text-left text-uppercase">About Us</h5>
+				<p class="text-left mb-2">Group 2 (2nd City)</p>
+				<p class="text-left mb-2">Austin<br />Jackson<br />Jacob<br />Nathan</p>
+
+			</div>
+
+		</div>
+	</div>
+</footer>
+{% endif %}

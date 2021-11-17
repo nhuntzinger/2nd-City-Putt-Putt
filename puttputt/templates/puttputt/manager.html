@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Manager</title>
-    </head>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Index{% endblock %}
+{% block content %}
 
     <body>
-        <p>Welcome to the manager homepage</p>
-    </body>
-
-    <p>Click <a href="edit_drink_menu">Here</a> to edit the drink menu</p>
-
-    <ul>
-        {% for user in all_users %}
-            <li>{{user.username}}     <a href='edit_user?username={{user.username}}'> edit this user</a></li>
-        {% endfor %}
-    </ul>
-</html>
+        <h1>Welcome to the manager homepage!</h1>
+		<br></br>
+    <h2>View and edit the drink menu here: <a href="edit_drink_menu" class="btn btn-primary"><i class="fa fa-edit"></i>Edit Drinks</a></h2>
+<h2 class="mb-3 mt-5">All Users </h2>
+<div class="table-responsive shadow mb-5"><table class="table table-striped mb-0">
+				<tr>
+					<th class="pl-3">User</th>
+                    <th>Status</th>
+                    <th></th>
+				</tr>
+				{% for user in all_users %}
+				<tr>
+					<td class="align-middle pl-3">{{user.username}}</td>
+					<td class="align-middle">{{user.profile.profile_type}}</td>
+					{% if user.profile.profile_type != 'MAN' %}
+					<td class="align-middle"><a href='edit_user?username={{user.username}}' class="btn btn-primary"><i class="fa fa-group"></i> Edit User Type</a></td>
+					{% else %}
+					<td></td>
+					{% endif %}
+					</tr>
+					{% endfor %}
+				</table></div>
+		 </body>
+{% endblock %}}

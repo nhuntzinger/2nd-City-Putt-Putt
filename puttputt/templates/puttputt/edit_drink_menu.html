@@ -1,26 +1,79 @@
-<p>This is where the manage will edit drink options</p>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Drink Edit{% endblock %}
+{% block content %}
 
-<p>Available Drinks</p>
-<ul>
-    {% for drink in current_drink_options %}
-        <li>{{drink.title}} for ${{drink.price}}</li>
+<h2 class="mb-3 mt-5">Your Current Drinks
+    <button class="p mx-3 btn btn-primary" data-toggle="modal" data-target="#new-drink-modal"><i
+            class="fa-fw fas fa-plus"></i>
+        Create Drink
+    </button>
+</h2>
+<div class="table-responsive shadow mb-5">
+    <table class="table table-striped mb-0">
+        <tr>
+            <th class="pl-3">Drink</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        {% for drink in current_drink_options %}
+        <tr>
+            <td class="align-middle pl-3">{{drink.title}}</td>
+            <td class="align-middle">${{drink.price}}</td>
+            <td class="align-middle">
+                <form action="{% url 'remove_drink' drink.pk %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" value="Delete" name={{drink.pk}}/>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
-        <form action="{% url 'remove_drink' drink.pk %}" method="post">
-            {% csrf_token %}
-            <input type="submit" value="Delete" name={{drink.pk}} />
-        </form>
-    {% endfor %}    
-</ul>
 
-<form action="add_drink" method="post">
-    {% csrf_token %}
-    <label for="title">Drink Name: </label>
-    <input id="title" type="text" name="title" value="{{ current_title }}">
-    <br />
-    <br />
-    <label for="price">Drink Price: </label>
-    <input id="price" type="number" name="price" min="0" />
-    <br />
-    <br />
-    <input type="submit" value="Create Drink">
-</form>
+<div class="modal fade" id="new-drink-modal" tabindex="-1" role="dialog" aria-labelledby="new-drink-modal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content p-4">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Drink Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="add_drink" method="post">
+                {% csrf_token %}
+                {% for message in messages %}
+
+                <div class="alert alert-danger">
+                    <a class="close" href="#" data-dismiss="alert">×</a>
+                    {{ message }}
+                </div>
+
+                {% endfor %}
+                <label for="title">Drink Name: </label>
+                <br/>
+                <input id="title" type="text" name="title" value="{{ current_title }}" required>
+                <br/>
+                <br/>
+                <label for="price">Drink Price: </label>
+                <br/>
+                <input id="price" type="number" name="price" min="0" required>
+                <br/>
+                <br/>
+                <label for="image">Drink Picture (This is optional, may only upload online link to picture, no
+                    files):</label>
+                <br/>
+                <input id="image" type="text" name="image">
+                <br/>
+                <br/>
+                <input type="submit" value="Create Drink">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

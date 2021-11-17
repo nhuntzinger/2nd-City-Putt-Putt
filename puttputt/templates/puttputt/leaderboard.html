@@ -1,17 +1,37 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Leaderboard</title>
-    </head>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Leaderboard{% endblock %}
+{% block content %}
+<body>
+<p>Welcome to the all time leaderboard</p>
 
-    <body>
-        <p>Welcome to the all time leaderboard</p>
+<p>Your final score was {{player_score}}</p>
+<h1>All time leaderboard:</h1>
+<div class="row mb-5">
+	<div class="col-lg-12">
+		<h2 class="mb-3 mt-5">Tournament Leaderboard</h2>
+		<div class="table-responsive shadow mb-5">
+			<table class="table table-striped mb-0">
+				<tr>
+					<th class="pl-3">Player</th>
+					<th>Score</th>
+					<th>Rank</th>
+					<th>Sponsor</th>
+				</tr>
+				{% for player in leaderboard %}
+				<tr>
+					<td class="align-middle">{{ player.profile}}</td>
+					<td class="align-middle">{{player.score}}</td>
+					<td class="align-middle">{{forloop.counter}}</td>
+					<td class="align-middle">{{player.tournament.sponsor}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+	<h2>go back to the end of your <a href="end_game">game</a></h2>
 
-        <p>Your final score was {{player_score}}</p>
-
-        <p>go back to the end of your <a href="end_game">game</a></p>
-
-        <p><a href="/logout">Logout</a></p>
-    </body>
+</body>
     
-</html>
+{% endblock %}}

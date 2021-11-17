@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Barista</title>
-    </head>
+{% extends 'puttputt/base.html' %}
+{% load static %}
+{% block title %}Barista{% endblock %}
+{% block content %}
 
     <body>
-        <p>Welcome to the barista home page</p>
+        <h1>Welcome to the barista home page! Now get to work</h1>
     </body>
 
     {% if drinks != None %}
+<h2 class="mb-3 mt-5">Your Open Drink Orders</h2>
+<div class="table-responsive shadow mb-5">
+    <table class="table table-striped mb-0">
+        <tr>
+            <th class="pl-3">Drink</th>
+            <th>Ordered By</th>
+            <th>Hole</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
         {% for drink in drinks %}
-            <p>{{drink.drink.title}} for {{drink.profile.user.username}} </p>
+        <tr>
+            <td class="align-middle pl-3">{{drink.drink.title}}</td>
+            <td class="align-middle">{{drink.user.username}}</td>
+            <td class="align-middle">5</td>
+            <td class="align-middle">{{drink.quantity}}</td>
+            <td> <form action="{% url 'mark_delivered' drink.pk %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-success" type="submit" value="Mark Completed" name={{drink.pk}}/>
+                </form></td>
+        </tr>
         {% endfor %}
+    </table>
+</div>
     {% else %}
-        <p>There are no outstanding drinks... well done!</p>
+        <h2>Your drink queue lookin kinda dry...haha get it?</h2>
     {% endif %}
-
-</html>
+{% endblock %}
