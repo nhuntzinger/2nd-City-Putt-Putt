@@ -108,12 +108,25 @@ The team will use GitHub to track changes to the system from start to finish. Te
 Setup instructions can be found in the root directory's README
 
 ## Unit testing
-As suggested by the django project documentation our team will perform unit tests through the unittest module which is built-in to Python.
+To perform unit tests:
 
-## Testing the entire solution
-Attempt to build the project using Docker
-Start the unit tests. 
-Actual manual testing.
+Within the docker image 'puttputt_web'
+1. Make sure you are in 2nd-City-Putt-Putt (i.e. "cd .../2nd-City-Putt-Putt")
+2. then run this command:
+```bash
+python manage.py test
+```
+
+## System Testing
+When testing the website, this functionality should be checked:
+1. Upon login, user is automatically a player
+2. Player can enter a game made by a sponsor
+3. Player can add funds to their account and order drinks
+4. Sponsor can create a tournament with their chosen date
+5. Manager can change user profile types and edit the current drink menu
+6. Barista can fullfill active drink orders
+7. This and other functionality
+
 
 ## Code Styling
 
