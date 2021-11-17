@@ -41,7 +41,7 @@ urlpatterns = [
     path('edit_drink_menu', views.edit_drink_menu, name="edit_drink_menu"),
     path('add_drink', views.add_drink, name="add_drink"),
     path(r'^delete/(?P<pk>[0-9]+)/$', views.remove_drink, name="remove_drink"),
-
+    path('add_funds', views.add_funds, name="add_funds"),
     path("order", views.order, name='order'),
     path("order_drink", views.order_drink, name='order_drink'),
     path(r'(?P<pk>[0-9]+)/$', views.mark_delivered, name='mark_delivered')

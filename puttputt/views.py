@@ -37,7 +37,6 @@ def loginFunc(request):
 def homeFunc(request):
     user = request.user
     location = determine_redirect_login(user)
-    print(location)
     return redirect(location)
 
 def register(request):
@@ -92,20 +91,33 @@ def index(request):
 
 def order(request):
     all_drinks = DrinkInfo.objects.all
-    context = {'drinks': all_drinks}
+    info = get_player(request.user)
+    player_info = info['player_info']
+    context = {'drinks': all_drinks, 'player_info': player_info}
     return render(request, 'puttputt/order.html', context)
-
 
 
 def order_drink(request):
     user = request.user
     drink = request.POST.get('drink')
     quantity = request.POST.get('qty')
+    info = get_player(user)
+    player_info = info['player_info']
+    player_info.current_funds -= int(request.POST.get('total'))
+    player_info.save()
     new_order = DrinkOrder(drink=DrinkInfo.objects.get(title=drink), user=user, order_delivered=False, quantity=quantity)
     user.save()
     new_order.save()
 
     return redirect('game')
+
+def add_funds(request):
+    info = get_player(request.user)
+    funds = request.POST.get('funds')
+    player_info = info['player_info']
+    player_info.current_funds += int(funds)
+    player_info.save()
+    return redirect('order')
 
 def logout_request(request):
     logout(request)

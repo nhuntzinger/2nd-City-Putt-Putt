@@ -5,6 +5,7 @@
         <!-- LOGGED IN USER SECTION BELOW -->
         {% if user.is_authenticated %}
         <h1>Welcome, {{ user.get_username }}!</h1>
+            <h2>If you're here to sponsor a tournament, please wait for admin to upgrade your account</h2>
             {% if not tournament == None %}
                 <h2>Your tournament is ready!</h2>
                 <p>Click below to enter your game!</p>
@@ -15,13 +16,13 @@
             {% endif %}
             
             <!--this can be removed but you can also bring it back. for testing, it's nice -->
-            <h2>All Users</h2>
-            <hr />
-            {% for item in all %}
-                <p>{{ item.fname }} {{ item.lname }}</p>
-                <p>{{item.get_username}}</p>
-                <hr />
-            {% endfor %}
+<!--            <h2>All Users</h2>-->
+<!--            <hr />-->
+<!--            {% for item in all %}-->
+<!--                <p>{{ item.fname }} {{ item.lname }}</p>-->
+<!--                <p>{{item.get_username}}</p>-->
+<!--                <hr />-->
+<!--            {% endfor %}-->
 
         <!-- NOT LOGGED IN USER SECTION BELOW -->
         {% else %}

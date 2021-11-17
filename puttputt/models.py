@@ -28,7 +28,7 @@ class SponsorInfo(models.Model):
     # the title of the sponsor: i.e. Nike
     title = models.CharField(max_length=50)
     def __str__(self):
-        return self.profile
+        return self.title
 
 class Tournament(models.Model):
     # who sponsored the event
@@ -48,6 +48,8 @@ class PlayerInfo(models.Model):
     current_score = models.IntegerField(default=0)
     # the player's current hole (update this after each stroke)
     current_hole = models.IntegerField(default=0)
+    # the player's current funds
+    current_funds = models.IntegerField(default=0)
 
 class ManagerInfo(models.Model):
     # the profile of this Manager
