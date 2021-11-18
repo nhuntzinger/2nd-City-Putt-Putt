@@ -20,6 +20,8 @@ The app itself will be in the directory puttputt
 
 ### First Time Setup
 
+First, ensure that the line endings for entry_point.sh are set to LF, not CLRF like Windows defaults to.
+
 Create a .env file inside the `./docker` directory. This file will need
 to contain the following information, with the approriate values filled
 in:
