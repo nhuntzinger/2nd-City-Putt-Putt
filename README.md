@@ -146,3 +146,8 @@ With exceptions that we will overide the following rules:
 - methods will be named with lower camel case
 
 - Classes will be named with upper camel case
+
+## AWS Hosting
+  
+Every time a commit is merged to the master branch, it is built and the docker image is pushed to AWS ECR.
+The image is running in a container on an EC2 instance.
