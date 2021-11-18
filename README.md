@@ -110,9 +110,16 @@ Setup instructions can be found in the root directory's README
 ## Unit testing
 To perform unit tests:
 
-Within the docker image 'puttputt_web'
-1. Make sure you are in 2nd-City-Putt-Putt (i.e. "cd .../2nd-City-Putt-Putt")
-2. then run this command:
+1. Attach to the 'puttputt_web' docker container by running the following command:
+
+```bash
+docker exec -it puttputt_web bash
+```
+
+2. Make sure you are in the 2nd-City-Putt-Putt directory (i.e. "cd <path to directory>/2nd-City-Putt-Putt")
+
+3. Run the tests by running this command:
+
 ```bash
 python manage.py test
 ```
