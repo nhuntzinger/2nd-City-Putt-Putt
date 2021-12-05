@@ -7,10 +7,13 @@
         <h1>Welcome, {{ user.get_username }}!</h1>
             <h2>If you're here to sponsor a tournament, please wait for admin to upgrade your account</h2>
             {% if not tournament == None %}
-                <h2>Your tournament is ready!</h2>
-                <p>Click below to enter your game!</p>
-                <!-- TODO: NEED TO BLOCK PLAYER FROM GOING BACK TO GAME AFTER THEY HAVE COMPLETED THEIRS -->
-                <a href="/game"> ENTER GAME </a>
+                {% if game_done %}
+                    <p>Looks like you finished your game, check the leaderboard <a href="/leaderboard">HERE</a></p>
+                {% else %}
+                    <h2>Your tournament is ready!</h2>
+                    <p>Click below to enter your game!</p>
+                    <a href="/game"> ENTER GAME </a>
+                {% endif %}
             {% else %}
                 <p>You're not part of a tournament yet... ask your sponsor to help!</p>
             {% endif %}

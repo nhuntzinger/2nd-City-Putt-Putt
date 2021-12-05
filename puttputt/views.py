@@ -71,19 +71,24 @@ def index(request):
     player_info = None
 
     tournament = None
-
+    done = None
     if request.user.is_authenticated:
         info = get_player(request.user)
+        game_info = get_game_info(request.user)
+        hole = game_info['current_hole']
         profile = info['profile']
         player_info = info['player_info']
         tournament = player_info.tournament
+        if hole >= get_number_of_holes():
+            done = True
+
     else:
         print('no authorized user')
 
     #if profile != None and player_info != None:
         #tournament_for_player(player_info)
 
-    context = {'all': all_members, 'profile': profile, 'player_info' : player_info, 'tournament' : tournament}
+    context = {'all': all_members, 'profile': profile, 'player_info' : player_info, 'tournament' : tournament, 'game_done': done}
 
     return render(request,
     'puttputt/index.html',
