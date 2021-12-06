@@ -72,7 +72,11 @@ def index(request):
 
     tournament = None
     done = None
+    active_drinks = None
     if request.user.is_authenticated:
+        active_drinks = DrinkOrder.objects.filter(user=request.user, order_delivered=False)
+        if active_drinks.count() == 0:
+            active_drinks = None
         info = get_player(request.user)
         game_info = get_game_info(request.user)
         hole = game_info['current_hole']
@@ -88,7 +92,7 @@ def index(request):
     #if profile != None and player_info != None:
         #tournament_for_player(player_info)
 
-    context = {'all': all_members, 'profile': profile, 'player_info' : player_info, 'tournament' : tournament, 'game_done': done}
+    context = {'all': all_members, 'profile': profile, 'player_info' : player_info, 'tournament' : tournament, 'game_done': done, 'drinks':active_drinks}
 
     return render(request,
     'puttputt/index.html',
@@ -106,11 +110,12 @@ def order_drink(request):
     user = request.user
     drink = request.POST.get('drink')
     quantity = request.POST.get('qty')
+    delivery = request.POST.get('del')
     info = get_player(user)
     player_info = info['player_info']
     player_info.current_funds -= int(request.POST.get('total'))
     player_info.save()
-    new_order = DrinkOrder(drink=DrinkInfo.objects.get(title=drink), user=user, order_delivered=False, quantity=quantity)
+    new_order = DrinkOrder(drink=DrinkInfo.objects.get(title=drink), user=user, order_delivered=False, quantity=quantity, del_hole=delivery)
     user.save()
     new_order.save()
 

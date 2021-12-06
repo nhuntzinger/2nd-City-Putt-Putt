@@ -31,12 +31,14 @@
                 <tr>
                     <th class="pl-3">Drink</th>
                     <th>Quantity</th>
+                    <th>Hole</th>
 
                 </tr>
                 {% for drink in drinks %}
                 <tr>
                     <td class="align-middle pl-3">{{drink.drink.title}}</td>
                     <td class="align-middle">{{drink.quantity}}</td>
+                    <td class="align-middle">{{drink.del_hole}}</td>
                 </tr>
                 {% endfor %}
             </table>

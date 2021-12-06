@@ -92,6 +92,8 @@ class DrinkOrder(models.Model):
     order_delivered = models.BooleanField(default=False)
     # quantity of drink ordered
     quantity = models.IntegerField(default=1)
+    # delivery hole
+    del_hole = models.IntegerField(default=0)
 
 class VenueInfo(models.Model):
     title = models.CharField(max_length=50)

@@ -22,7 +22,7 @@
         <tr>
             <td class="align-middle pl-3">{{drink.drink.title}}</td>
             <td class="align-middle">{{drink.user.username}}</td>
-            <td class="align-middle">5</td>
+            <td class="align-middle">{{drink.del_hole}}</td>
             <td class="align-middle">{{drink.quantity}}</td>
             <td> <form action="{% url 'mark_delivered' drink.pk %}" method="post">
                     {% csrf_token %}

@@ -17,7 +17,26 @@
             {% else %}
                 <p>You're not part of a tournament yet... ask your sponsor to help!</p>
             {% endif %}
-            
+            {% if drinks != None %}
+        <h2>Your pending drink orders</h2>
+        <div class="table-responsive shadow mb-5">
+            <table class="table table-striped mb-0">
+                <tr>
+                    <th class="pl-3">Drink</th>
+                    <th>Quantity</th>
+                    <th>Hole</th>
+
+                </tr>
+                {% for drink in drinks %}
+                <tr>
+                    <td class="align-middle pl-3">{{drink.drink.title}}</td>
+                    <td class="align-middle">{{drink.quantity}}</td>
+                    <td class="align-middle">{{drink.del_hole}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
             <!--this can be removed but you can also bring it back. for testing, it's nice -->
 <!--            <h2>All Users</h2>-->
 <!--            <hr />-->

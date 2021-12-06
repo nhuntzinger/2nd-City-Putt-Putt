@@ -25,7 +25,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content ">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Please Select Quantity</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Please Select Quantity and Hole for Delivery</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -34,6 +34,11 @@
                             {% csrf_token %}
                             <div class="modal-body">
 <!--                                <div class="qty mt-5">-->
+                                    <label for="del">Select which hole you'd like it delivered to</label>
+                                    <input type="number" name="del" id="del" min="1">
+                                    <br/>
+                                    <label for="qty">Select number of drinks</label>
+                                    <br/>
                                     <input type="number" class="count" name="qty" id="qty" value="1" min="1"/>
                                     <br/>
                                     <br/>
