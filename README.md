@@ -161,3 +161,7 @@ With exceptions that we will overide the following rules:
   
 Every time a commit is merged to the master branch, it is built and the docker image is pushed to AWS ECR.
 The image is running in a container on an EC2 instance.
+
+
+## PRESENTATION SLIDES 
+https://docs.google.com/presentation/d/1s3hPsS8VTy9Gho0Vk0VkL2fNDacqU_iQ7v57DDfkCy0/edit?usp=sharing
