@@ -127,6 +127,14 @@ python manage.py test
 ```
 
 ## System Testing
+  
+Use these users for testing (If you want to create more players you can simply just sign up as a different user)
+```bash
+  Manager: (Username - admin, password - admin)
+  Sponsor: (Username - sponsor, password - sponsor)
+  Barista: (Username - barista, password - barista)
+  Player: (Username - Testplayer, password - Testpass1)
+```
 When testing the website, this functionality should be checked:
 1. Upon login, user is automatically a player
 2. Player can enter a game made by a sponsor
